@@ -19,6 +19,9 @@ contract Marketplace is IMarket, TurkeyFactory, Ownable{
         
     }
     
+    function listingsLength() public view returns(uint){
+        return listings.length;
+    }
     /// @dev The price of creating a new listing.
     function listingCreationPrice() external override pure returns(uint){
           return 2;

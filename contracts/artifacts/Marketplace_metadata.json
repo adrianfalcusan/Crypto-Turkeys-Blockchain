@@ -398,6 +398,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "listingsLength",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "owner",
 				"outputs": [
 					{
@@ -661,11 +674,11 @@
 			]
 		},
 		"contracts/Marketplace.sol": {
-			"keccak256": "0x7bcdf15d8c32bed3ef71e03fab01d61508ab8b4915b337f72a8fa14c9550f1d0",
+			"keccak256": "0xad704948c29e56492fda42e5b42faf924b0fe838dd8f044f01361de4404241dd",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://a79b67653fb7f688ffb85a5b0f2a9051add893faa61c763284af80fa7e6791c8",
-				"dweb:/ipfs/QmSF15zMTVXS5wdRHE1RT8PoreLMhNfA3TPh91RYYHiMt1"
+				"bzz-raw://7ee8d1fccebadff4e43aafa726200194b8fb6ee24f67e5b6f571e0e565a73a03",
+				"dweb:/ipfs/QmYCPZPebzUmvWymu6iibv2Cuzr7PZQNczPwpArPMJUyfc"
 			]
 		},
 		"contracts/Ownable.sol": {
