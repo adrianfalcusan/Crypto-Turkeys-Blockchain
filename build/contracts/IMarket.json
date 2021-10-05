@@ -1,0 +1,2311 @@
+{
+  "contractName": "IMarket",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_listing",
+          "type": "uint256"
+        }
+      ],
+      "name": "ListingCanceled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_contract",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_token",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_seller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "ListingCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_listing",
+          "type": "uint256"
+        }
+      ],
+      "name": "ListingSold",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "listingCreationPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "listingPurchaseFee",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "activeListings",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_listing",
+          "type": "uint256"
+        }
+      ],
+      "name": "getListing",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "contract_",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "token",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "price",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum IMarket.Status",
+              "name": "status",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct IMarket.Listing",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_contract",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_token",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "createListing",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "listing",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_listing",
+          "type": "uint256"
+        }
+      ],
+      "name": "cancelListing",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_listing",
+          "type": "uint256"
+        }
+      ],
+      "name": "purchase",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.7+commit.e28d00a7\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"_listing\",\"type\":\"uint256\"}],\"name\":\"ListingCanceled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_contract\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"_token\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_seller\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"}],\"name\":\"ListingCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"_listing\",\"type\":\"uint256\"}],\"name\":\"ListingSold\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"activeListings\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_listing\",\"type\":\"uint256\"}],\"name\":\"cancelListing\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contract\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_token\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"}],\"name\":\"createListing\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"listing\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_listing\",\"type\":\"uint256\"}],\"name\":\"getListing\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"contract_\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"token\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"seller\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"enum IMarket.Status\",\"name\":\"status\",\"type\":\"uint8\"}],\"internalType\":\"struct IMarket.Listing\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"listingCreationPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"listingPurchaseFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_listing\",\"type\":\"uint256\"}],\"name\":\"purchase\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"A marketplace for selling/purchasing NFTs to/from other users.\",\"events\":{\"ListingCanceled(uint256)\":{\"details\":\"Event that is emitted when a listing is canceled.\"},\"ListingCreated(address,uint256,address,uint256)\":{\"details\":\"Event that is emitted when a listing is created.\"},\"ListingSold(uint256)\":{\"details\":\"Event that is emitted when a listing is sold.\"}},\"kind\":\"dev\",\"methods\":{\"activeListings()\":{\"details\":\"Get all active listings.\"},\"cancelListing(uint256)\":{\"details\":\"Cancel an active listing.\"},\"createListing(address,uint256,uint256)\":{\"details\":\"Create a new listing.\"},\"getListing(uint256)\":{\"details\":\"Get the details of a listing.\"},\"listingCreationPrice()\":{\"details\":\"The price of creating a new listing.\"},\"listingPurchaseFee()\":{\"details\":\"Percentage of the purchasing price that is retained by the Market operator.\"},\"purchase(uint256)\":{\"details\":\"Purchase an active listing.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IMarket.sol\":\"IMarket\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IMarket.sol\":{\"keccak256\":\"0x9d33006b829788e13dc6ebef5af07541c18101dd0a202d3aa31bde775b69f3c4\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://2093304493b13f660257c0498d70e469ea54ef3f3caaae153bb9fc95a8032687\",\"dweb:/ipfs/QmeLzSmBb26Sh7mWb9rNZ932pSUPVmjUaG9m4oZubHDP9H\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "//SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.7;\n\n/// @dev A marketplace for selling/purchasing NFTs to/from other users.\ninterface IMarket {\n  /// @dev The status of a listing\n  enum Status { Canceled, Active, Sold }\n\n  /// @dev The data stored for each listing on this Market\n  struct Listing {\n    address contract_; \n    uint token;\n    address seller;\n    uint price;\n    Status status;\n  }\n\n  /// @dev Event that is emitted when a listing is created.\n  event ListingCreated(\n    address indexed _contract,\n    uint indexed _token,\n    address indexed _seller,\n    uint _price\n  );\n\n  /// @dev Event that is emitted when a listing is canceled.\n  event ListingCanceled(uint indexed _listing);\n\n  /// @dev Event that is emitted when a listing is sold.\n  event ListingSold(uint indexed _listing);\n\n  /// @dev The price of creating a new listing.\n  function listingCreationPrice() external view returns(uint);\n\n  /// @dev Percentage of the purchasing price that is retained by the Market operator.\n  function listingPurchaseFee() external view returns(uint);\n\n  /// @dev Get all active listings.\n  function activeListings() external view returns(uint[] memory);\n\n  /// @dev Get the details of a listing.\n  function getListing(uint _listing) external view returns(Listing memory);\n\n  /// @dev Create a new listing.\n  function createListing(address _contract, uint _token, uint _price) external payable returns(uint listing);\n\n  /// @dev Cancel an active listing.\n  function cancelListing(uint _listing) external;\n\n  /// @dev Purchase an active listing.\n  function purchase(uint _listing) external payable;\n}",
+  "sourcePath": "/Users/adifalcusan/Desktop/Synapsics-internship/marketplace/contracts/IMarket.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/IMarket.sol",
+    "exportedSymbols": {
+      "IMarket": [
+        475
+      ]
+    },
+    "id": 476,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 384,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "38:23:3"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 385,
+          "nodeType": "StructuredDocumentation",
+          "src": "63:72:3",
+          "text": "@dev A marketplace for selling/purchasing NFTs to/from other users."
+        },
+        "fullyImplemented": false,
+        "id": 475,
+        "linearizedBaseContracts": [
+          475
+        ],
+        "name": "IMarket",
+        "nameLocation": "145:7:3",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IMarket.Status",
+            "id": 389,
+            "members": [
+              {
+                "id": 386,
+                "name": "Canceled",
+                "nameLocation": "206:8:3",
+                "nodeType": "EnumValue",
+                "src": "206:8:3"
+              },
+              {
+                "id": 387,
+                "name": "Active",
+                "nameLocation": "216:6:3",
+                "nodeType": "EnumValue",
+                "src": "216:6:3"
+              },
+              {
+                "id": 388,
+                "name": "Sold",
+                "nameLocation": "224:4:3",
+                "nodeType": "EnumValue",
+                "src": "224:4:3"
+              }
+            ],
+            "name": "Status",
+            "nameLocation": "197:6:3",
+            "nodeType": "EnumDefinition",
+            "src": "192:38:3"
+          },
+          {
+            "canonicalName": "IMarket.Listing",
+            "id": 401,
+            "members": [
+              {
+                "constant": false,
+                "id": 391,
+                "mutability": "mutable",
+                "name": "contract_",
+                "nameLocation": "322:9:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 401,
+                "src": "314:17:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 390,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "314:7:3",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 393,
+                "mutability": "mutable",
+                "name": "token",
+                "nameLocation": "343:5:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 401,
+                "src": "338:10:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 392,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "338:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 395,
+                "mutability": "mutable",
+                "name": "seller",
+                "nameLocation": "362:6:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 401,
+                "src": "354:14:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 394,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "354:7:3",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 397,
+                "mutability": "mutable",
+                "name": "price",
+                "nameLocation": "379:5:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 401,
+                "src": "374:10:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 396,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "374:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 400,
+                "mutability": "mutable",
+                "name": "status",
+                "nameLocation": "397:6:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 401,
+                "src": "390:13:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_Status_$389",
+                  "typeString": "enum IMarket.Status"
+                },
+                "typeName": {
+                  "id": 399,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 398,
+                    "name": "Status",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 389,
+                    "src": "390:6:3"
+                  },
+                  "referencedDeclaration": 389,
+                  "src": "390:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Status_$389",
+                    "typeString": "enum IMarket.Status"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Listing",
+            "nameLocation": "300:7:3",
+            "nodeType": "StructDefinition",
+            "scope": 475,
+            "src": "293:115:3",
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 402,
+              "nodeType": "StructuredDocumentation",
+              "src": "412:57:3",
+              "text": "@dev Event that is emitted when a listing is created."
+            },
+            "id": 412,
+            "name": "ListingCreated",
+            "nameLocation": "478:14:3",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 411,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 404,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_contract",
+                  "nameLocation": "514:9:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 412,
+                  "src": "498:25:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 403,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "498:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 406,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_token",
+                  "nameLocation": "542:6:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 412,
+                  "src": "529:19:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 405,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "529:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 408,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_seller",
+                  "nameLocation": "570:7:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 412,
+                  "src": "554:23:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 407,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "554:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 410,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_price",
+                  "nameLocation": "588:6:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 412,
+                  "src": "583:11:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 409,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "583:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "492:106:3"
+            },
+            "src": "472:127:3"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 413,
+              "nodeType": "StructuredDocumentation",
+              "src": "603:58:3",
+              "text": "@dev Event that is emitted when a listing is canceled."
+            },
+            "id": 417,
+            "name": "ListingCanceled",
+            "nameLocation": "670:15:3",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 416,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 415,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_listing",
+                  "nameLocation": "699:8:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 417,
+                  "src": "686:21:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 414,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "686:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "685:23:3"
+            },
+            "src": "664:45:3"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 418,
+              "nodeType": "StructuredDocumentation",
+              "src": "713:54:3",
+              "text": "@dev Event that is emitted when a listing is sold."
+            },
+            "id": 422,
+            "name": "ListingSold",
+            "nameLocation": "776:11:3",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 421,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 420,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_listing",
+                  "nameLocation": "801:8:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 422,
+                  "src": "788:21:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 419,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "788:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "787:23:3"
+            },
+            "src": "770:41:3"
+          },
+          {
+            "documentation": {
+              "id": 423,
+              "nodeType": "StructuredDocumentation",
+              "src": "815:45:3",
+              "text": "@dev The price of creating a new listing."
+            },
+            "functionSelector": "c7189507",
+            "id": 428,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "listingCreationPrice",
+            "nameLocation": "872:20:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 424,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "892:2:3"
+            },
+            "returnParameters": {
+              "id": 427,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 426,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 428,
+                  "src": "917:4:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 425,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "917:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "916:6:3"
+            },
+            "scope": 475,
+            "src": "863:60:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 429,
+              "nodeType": "StructuredDocumentation",
+              "src": "927:84:3",
+              "text": "@dev Percentage of the purchasing price that is retained by the Market operator."
+            },
+            "functionSelector": "ed3fb36b",
+            "id": 434,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "listingPurchaseFee",
+            "nameLocation": "1023:18:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 430,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1041:2:3"
+            },
+            "returnParameters": {
+              "id": 433,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 432,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 434,
+                  "src": "1066:4:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 431,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1066:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1065:6:3"
+            },
+            "scope": 475,
+            "src": "1014:58:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 435,
+              "nodeType": "StructuredDocumentation",
+              "src": "1076:33:3",
+              "text": "@dev Get all active listings."
+            },
+            "functionSelector": "d3a17f29",
+            "id": 441,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "activeListings",
+            "nameLocation": "1121:14:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 436,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1135:2:3"
+            },
+            "returnParameters": {
+              "id": 440,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 439,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 441,
+                  "src": "1160:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 437,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1160:4:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 438,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1160:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1159:15:3"
+            },
+            "scope": 475,
+            "src": "1112:63:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 442,
+              "nodeType": "StructuredDocumentation",
+              "src": "1179:38:3",
+              "text": "@dev Get the details of a listing."
+            },
+            "functionSelector": "107a274a",
+            "id": 450,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getListing",
+            "nameLocation": "1229:10:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 445,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 444,
+                  "mutability": "mutable",
+                  "name": "_listing",
+                  "nameLocation": "1245:8:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 450,
+                  "src": "1240:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 443,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1240:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1239:15:3"
+            },
+            "returnParameters": {
+              "id": 449,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 448,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 450,
+                  "src": "1277:14:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Listing_$401_memory_ptr",
+                    "typeString": "struct IMarket.Listing"
+                  },
+                  "typeName": {
+                    "id": 447,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 446,
+                      "name": "Listing",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 401,
+                      "src": "1277:7:3"
+                    },
+                    "referencedDeclaration": 401,
+                    "src": "1277:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Listing_$401_storage_ptr",
+                      "typeString": "struct IMarket.Listing"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1276:16:3"
+            },
+            "scope": 475,
+            "src": "1220:73:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 451,
+              "nodeType": "StructuredDocumentation",
+              "src": "1297:30:3",
+              "text": "@dev Create a new listing."
+            },
+            "functionSelector": "24780c56",
+            "id": 462,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createListing",
+            "nameLocation": "1339:13:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 458,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 453,
+                  "mutability": "mutable",
+                  "name": "_contract",
+                  "nameLocation": "1361:9:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 462,
+                  "src": "1353:17:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 452,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1353:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 455,
+                  "mutability": "mutable",
+                  "name": "_token",
+                  "nameLocation": "1377:6:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 462,
+                  "src": "1372:11:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 454,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1372:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 457,
+                  "mutability": "mutable",
+                  "name": "_price",
+                  "nameLocation": "1390:6:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 462,
+                  "src": "1385:11:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 456,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1385:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1352:45:3"
+            },
+            "returnParameters": {
+              "id": 461,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 460,
+                  "mutability": "mutable",
+                  "name": "listing",
+                  "nameLocation": "1428:7:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 462,
+                  "src": "1423:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 459,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1423:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1422:14:3"
+            },
+            "scope": 475,
+            "src": "1330:107:3",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 463,
+              "nodeType": "StructuredDocumentation",
+              "src": "1441:34:3",
+              "text": "@dev Cancel an active listing."
+            },
+            "functionSelector": "305a67a8",
+            "id": 468,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "cancelListing",
+            "nameLocation": "1487:13:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 466,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 465,
+                  "mutability": "mutable",
+                  "name": "_listing",
+                  "nameLocation": "1506:8:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 468,
+                  "src": "1501:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 464,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1501:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1500:15:3"
+            },
+            "returnParameters": {
+              "id": 467,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1524:0:3"
+            },
+            "scope": 475,
+            "src": "1478:47:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 469,
+              "nodeType": "StructuredDocumentation",
+              "src": "1529:36:3",
+              "text": "@dev Purchase an active listing."
+            },
+            "functionSelector": "efef39a1",
+            "id": 474,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "purchase",
+            "nameLocation": "1577:8:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 472,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 471,
+                  "mutability": "mutable",
+                  "name": "_listing",
+                  "nameLocation": "1591:8:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 474,
+                  "src": "1586:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 470,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1586:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1585:15:3"
+            },
+            "returnParameters": {
+              "id": 473,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1617:0:3"
+            },
+            "scope": 475,
+            "src": "1568:50:3",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 476,
+        "src": "135:1485:3",
+        "usedErrors": []
+      }
+    ],
+    "src": "38:1582:3"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/IMarket.sol",
+    "exportedSymbols": {
+      "IMarket": [
+        475
+      ]
+    },
+    "id": 476,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 384,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "38:23:3"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 385,
+          "nodeType": "StructuredDocumentation",
+          "src": "63:72:3",
+          "text": "@dev A marketplace for selling/purchasing NFTs to/from other users."
+        },
+        "fullyImplemented": false,
+        "id": 475,
+        "linearizedBaseContracts": [
+          475
+        ],
+        "name": "IMarket",
+        "nameLocation": "145:7:3",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IMarket.Status",
+            "id": 389,
+            "members": [
+              {
+                "id": 386,
+                "name": "Canceled",
+                "nameLocation": "206:8:3",
+                "nodeType": "EnumValue",
+                "src": "206:8:3"
+              },
+              {
+                "id": 387,
+                "name": "Active",
+                "nameLocation": "216:6:3",
+                "nodeType": "EnumValue",
+                "src": "216:6:3"
+              },
+              {
+                "id": 388,
+                "name": "Sold",
+                "nameLocation": "224:4:3",
+                "nodeType": "EnumValue",
+                "src": "224:4:3"
+              }
+            ],
+            "name": "Status",
+            "nameLocation": "197:6:3",
+            "nodeType": "EnumDefinition",
+            "src": "192:38:3"
+          },
+          {
+            "canonicalName": "IMarket.Listing",
+            "id": 401,
+            "members": [
+              {
+                "constant": false,
+                "id": 391,
+                "mutability": "mutable",
+                "name": "contract_",
+                "nameLocation": "322:9:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 401,
+                "src": "314:17:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 390,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "314:7:3",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 393,
+                "mutability": "mutable",
+                "name": "token",
+                "nameLocation": "343:5:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 401,
+                "src": "338:10:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 392,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "338:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 395,
+                "mutability": "mutable",
+                "name": "seller",
+                "nameLocation": "362:6:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 401,
+                "src": "354:14:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 394,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "354:7:3",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 397,
+                "mutability": "mutable",
+                "name": "price",
+                "nameLocation": "379:5:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 401,
+                "src": "374:10:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 396,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "374:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 400,
+                "mutability": "mutable",
+                "name": "status",
+                "nameLocation": "397:6:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 401,
+                "src": "390:13:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_Status_$389",
+                  "typeString": "enum IMarket.Status"
+                },
+                "typeName": {
+                  "id": 399,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 398,
+                    "name": "Status",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 389,
+                    "src": "390:6:3"
+                  },
+                  "referencedDeclaration": 389,
+                  "src": "390:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Status_$389",
+                    "typeString": "enum IMarket.Status"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Listing",
+            "nameLocation": "300:7:3",
+            "nodeType": "StructDefinition",
+            "scope": 475,
+            "src": "293:115:3",
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 402,
+              "nodeType": "StructuredDocumentation",
+              "src": "412:57:3",
+              "text": "@dev Event that is emitted when a listing is created."
+            },
+            "id": 412,
+            "name": "ListingCreated",
+            "nameLocation": "478:14:3",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 411,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 404,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_contract",
+                  "nameLocation": "514:9:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 412,
+                  "src": "498:25:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 403,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "498:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 406,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_token",
+                  "nameLocation": "542:6:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 412,
+                  "src": "529:19:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 405,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "529:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 408,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_seller",
+                  "nameLocation": "570:7:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 412,
+                  "src": "554:23:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 407,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "554:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 410,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_price",
+                  "nameLocation": "588:6:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 412,
+                  "src": "583:11:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 409,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "583:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "492:106:3"
+            },
+            "src": "472:127:3"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 413,
+              "nodeType": "StructuredDocumentation",
+              "src": "603:58:3",
+              "text": "@dev Event that is emitted when a listing is canceled."
+            },
+            "id": 417,
+            "name": "ListingCanceled",
+            "nameLocation": "670:15:3",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 416,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 415,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_listing",
+                  "nameLocation": "699:8:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 417,
+                  "src": "686:21:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 414,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "686:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "685:23:3"
+            },
+            "src": "664:45:3"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 418,
+              "nodeType": "StructuredDocumentation",
+              "src": "713:54:3",
+              "text": "@dev Event that is emitted when a listing is sold."
+            },
+            "id": 422,
+            "name": "ListingSold",
+            "nameLocation": "776:11:3",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 421,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 420,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_listing",
+                  "nameLocation": "801:8:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 422,
+                  "src": "788:21:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 419,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "788:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "787:23:3"
+            },
+            "src": "770:41:3"
+          },
+          {
+            "documentation": {
+              "id": 423,
+              "nodeType": "StructuredDocumentation",
+              "src": "815:45:3",
+              "text": "@dev The price of creating a new listing."
+            },
+            "functionSelector": "c7189507",
+            "id": 428,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "listingCreationPrice",
+            "nameLocation": "872:20:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 424,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "892:2:3"
+            },
+            "returnParameters": {
+              "id": 427,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 426,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 428,
+                  "src": "917:4:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 425,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "917:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "916:6:3"
+            },
+            "scope": 475,
+            "src": "863:60:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 429,
+              "nodeType": "StructuredDocumentation",
+              "src": "927:84:3",
+              "text": "@dev Percentage of the purchasing price that is retained by the Market operator."
+            },
+            "functionSelector": "ed3fb36b",
+            "id": 434,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "listingPurchaseFee",
+            "nameLocation": "1023:18:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 430,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1041:2:3"
+            },
+            "returnParameters": {
+              "id": 433,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 432,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 434,
+                  "src": "1066:4:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 431,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1066:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1065:6:3"
+            },
+            "scope": 475,
+            "src": "1014:58:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 435,
+              "nodeType": "StructuredDocumentation",
+              "src": "1076:33:3",
+              "text": "@dev Get all active listings."
+            },
+            "functionSelector": "d3a17f29",
+            "id": 441,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "activeListings",
+            "nameLocation": "1121:14:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 436,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1135:2:3"
+            },
+            "returnParameters": {
+              "id": 440,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 439,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 441,
+                  "src": "1160:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 437,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1160:4:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 438,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1160:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1159:15:3"
+            },
+            "scope": 475,
+            "src": "1112:63:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 442,
+              "nodeType": "StructuredDocumentation",
+              "src": "1179:38:3",
+              "text": "@dev Get the details of a listing."
+            },
+            "functionSelector": "107a274a",
+            "id": 450,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getListing",
+            "nameLocation": "1229:10:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 445,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 444,
+                  "mutability": "mutable",
+                  "name": "_listing",
+                  "nameLocation": "1245:8:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 450,
+                  "src": "1240:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 443,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1240:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1239:15:3"
+            },
+            "returnParameters": {
+              "id": 449,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 448,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 450,
+                  "src": "1277:14:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Listing_$401_memory_ptr",
+                    "typeString": "struct IMarket.Listing"
+                  },
+                  "typeName": {
+                    "id": 447,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 446,
+                      "name": "Listing",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 401,
+                      "src": "1277:7:3"
+                    },
+                    "referencedDeclaration": 401,
+                    "src": "1277:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Listing_$401_storage_ptr",
+                      "typeString": "struct IMarket.Listing"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1276:16:3"
+            },
+            "scope": 475,
+            "src": "1220:73:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 451,
+              "nodeType": "StructuredDocumentation",
+              "src": "1297:30:3",
+              "text": "@dev Create a new listing."
+            },
+            "functionSelector": "24780c56",
+            "id": 462,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createListing",
+            "nameLocation": "1339:13:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 458,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 453,
+                  "mutability": "mutable",
+                  "name": "_contract",
+                  "nameLocation": "1361:9:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 462,
+                  "src": "1353:17:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 452,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1353:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 455,
+                  "mutability": "mutable",
+                  "name": "_token",
+                  "nameLocation": "1377:6:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 462,
+                  "src": "1372:11:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 454,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1372:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 457,
+                  "mutability": "mutable",
+                  "name": "_price",
+                  "nameLocation": "1390:6:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 462,
+                  "src": "1385:11:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 456,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1385:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1352:45:3"
+            },
+            "returnParameters": {
+              "id": 461,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 460,
+                  "mutability": "mutable",
+                  "name": "listing",
+                  "nameLocation": "1428:7:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 462,
+                  "src": "1423:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 459,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1423:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1422:14:3"
+            },
+            "scope": 475,
+            "src": "1330:107:3",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 463,
+              "nodeType": "StructuredDocumentation",
+              "src": "1441:34:3",
+              "text": "@dev Cancel an active listing."
+            },
+            "functionSelector": "305a67a8",
+            "id": 468,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "cancelListing",
+            "nameLocation": "1487:13:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 466,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 465,
+                  "mutability": "mutable",
+                  "name": "_listing",
+                  "nameLocation": "1506:8:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 468,
+                  "src": "1501:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 464,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1501:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1500:15:3"
+            },
+            "returnParameters": {
+              "id": 467,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1524:0:3"
+            },
+            "scope": 475,
+            "src": "1478:47:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 469,
+              "nodeType": "StructuredDocumentation",
+              "src": "1529:36:3",
+              "text": "@dev Purchase an active listing."
+            },
+            "functionSelector": "efef39a1",
+            "id": 474,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "purchase",
+            "nameLocation": "1577:8:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 472,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 471,
+                  "mutability": "mutable",
+                  "name": "_listing",
+                  "nameLocation": "1591:8:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 474,
+                  "src": "1586:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 470,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1586:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1585:15:3"
+            },
+            "returnParameters": {
+              "id": 473,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1617:0:3"
+            },
+            "scope": 475,
+            "src": "1568:50:3",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 476,
+        "src": "135:1485:3",
+        "usedErrors": []
+      }
+    ],
+    "src": "38:1582:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.7+commit.e28d00a7.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-27T14:18:14.204Z",
+  "devdoc": {
+    "details": "A marketplace for selling/purchasing NFTs to/from other users.",
+    "events": {
+      "ListingCanceled(uint256)": {
+        "details": "Event that is emitted when a listing is canceled."
+      },
+      "ListingCreated(address,uint256,address,uint256)": {
+        "details": "Event that is emitted when a listing is created."
+      },
+      "ListingSold(uint256)": {
+        "details": "Event that is emitted when a listing is sold."
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "activeListings()": {
+        "details": "Get all active listings."
+      },
+      "cancelListing(uint256)": {
+        "details": "Cancel an active listing."
+      },
+      "createListing(address,uint256,uint256)": {
+        "details": "Create a new listing."
+      },
+      "getListing(uint256)": {
+        "details": "Get the details of a listing."
+      },
+      "listingCreationPrice()": {
+        "details": "The price of creating a new listing."
+      },
+      "listingPurchaseFee()": {
+        "details": "Percentage of the purchasing price that is retained by the Market operator."
+      },
+      "purchase(uint256)": {
+        "details": "Purchase an active listing."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
